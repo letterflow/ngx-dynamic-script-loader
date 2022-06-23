@@ -2,7 +2,7 @@
 
 Small Angular library to dynamically load and inject remote JS scripts into the DOM on-demand.
 
-## **Install**
+## Install
 
 Using **yarn**:
 
@@ -16,9 +16,9 @@ Using **npm**:
 npm install --save @letterflow/ngx-dynamic-script-loader
 ```
 
-## **Usage**
+## Usage
 
-### Using the library with default configuration:
+#### Using the library with default configuration:
 
 ```ts
 import {NgxDynamicScriptLoaderModule} from '@letterflow/ngx-dynamic-script-loader';
@@ -29,7 +29,7 @@ import {NgxDynamicScriptLoaderModule} from '@letterflow/ngx-dynamic-script-loade
 export class ExampleModule {}
 ```
 
-### Using the library with custom configuration:
+#### Using the library with custom configuration:
 
 ```ts
 import {NgxDynamicScriptLoaderModule} from '@letterflow/ngx-dynamic-script-loader';
@@ -46,7 +46,7 @@ import {NgxDynamicScriptLoaderModule} from '@letterflow/ngx-dynamic-script-loade
 export class ExampleModule {}
 ```
 
-### Providing configuration using `NgxDynamicScriptLoaderConfig` InjectionToken:
+#### Providing configuration using `NgxDynamicScriptLoaderConfig` InjectionToken:
 
 ```ts
 import {
@@ -73,35 +73,48 @@ import {
 export class ExampleFeatureModule {}
 ```
 
-## **Configuration**
+## Configuration
 
 When calling `NgxDynamicScriptLoader#loadScript`, configuration provided in the methods argument,
 will be merged with the current value provided by the `NgxDynamicScriptLoaderConfig` InjectionToken.
+
+All callbacks default to a `noop` function.
 
 Here is a list of possible configuration fields in `NgxDynamicScripLoaderConfig`:
 
 - **async**: _boolean_
 
   Value to use for the _async_ attribute in the injected HTMLScriptElement.
-  Defaults to `true`.
+
+  Default: `true`.
 
 - **skipAbort**: _boolean_
 
   Whether to throw an error when the `onabort` event fires on the HTMLScriptElement.
+
+  Default: `true`.
 
 - **skipError**: _boolean_
 
   Whether to throw an error when the `onerror` event fires on the HTMLScriptElement.
   Note: When loading a list of scripts and this field is set to _true_, all subsequent scripts will not be loaded.
 
+  Default: `true`.
+
 - **onLoad**: (reason) => void
 
   Callback that fires when the `onload` event occures.
+
+  Default: `noop`.
 
 - **onAbort**: (reason) => void
 
   Callback that fires when the `onabort` event occures.
 
+  Default: `noop`.
+
 - **onError**: (reason) => void
 
   Callback that fires when the `onerror` event occures.
+
+  Default: `noop`.
