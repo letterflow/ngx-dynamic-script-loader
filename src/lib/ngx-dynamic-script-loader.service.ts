@@ -63,7 +63,7 @@
     * @param {Document} doc Main renderering context.
     */
    constructor(
-     private readonly renderer2Factory: RendererFactory2,
+     renderer2Factory: RendererFactory2,
      private readonly config: NgxDynamicScriptLoaderConfig,
      @Inject(DOCUMENT) private doc: Document
    ) {
@@ -89,7 +89,7 @@
    loadScript(scriptRef: NgxDynamicScriptRef): Observable<NgxDynamicScriptLoaded> {
      return new Observable<NgxDynamicScriptLoaded>((subscriber) => {
        const {name, src, ...scriptRefConfig} = scriptRef;
-       const {async, skipError, skipAbort} = {...this.config, ...scriptRefConfig};
+       const {async, skipError, skipAbort, onLoad, onAbort, onError} = {...this.config, ...scriptRefConfig};
 
        if (this.isLoaded(name)) {
          // The script reference was already fetched from the remote url.
@@ -104,10 +104,8 @@
          const module = window != null ? self[name as any] : undefined;
          const result: NgxDynamicScriptLoaded = {fetched: true, loaded: true, name, src, module};
 
-         if (scriptRef.onLoad) {
-           // Trigger provided `onLoad` callback.
-           scriptRef.onLoad(result);
-         }
+         // Trigger provided `onLoad` callback.
+         onLoad(result);
 
          this.scripts.set(name, result);
          subscriber.next(result);
@@ -121,11 +119,8 @@
            subscriber.next(result);
            subscriber.complete();
          } else {
-           if (scriptRef.onAbort) {
-             // Trigger provided `onAbort` callback.
-             scriptRef.onAbort(reason);
-           }
-
+           // Trigger provided `onAbort` callback.
+           onAbort(reason);
            subscriber.error(reason);
          }
        };
@@ -136,10 +131,8 @@
            subscriber.next(result);
            subscriber.complete();
          } else {
-           if (scriptRef.onError) {
-             // Trigger provided `onError` callback.
-             scriptRef.onError(reason);
-           }
+           // Trigger provided `onError` callback.
+           onError(reason);
            subscriber.error(reason);
          }
        };
