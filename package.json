@@ -1,6 +1,6 @@
 {
   "name": "@letterflow/ngx-dynamic-script-loader",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
   "description": "Small Angular library to dynamically load and inject remote JS scripts into the DOM.",
   "homepage": "https://github.com/letterflow/ngx-dynamic-script-loader#readme",
