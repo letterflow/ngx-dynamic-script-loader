@@ -1,0 +1,37 @@
+{
+  "name": "@letterflow/ngx-dynamic-script-loader",
+  "version": "0.0.2",
+  "license": "MIT",
+  "description": "Small Angular library to dynamically load and inject remote JS scripts into the DOM.",
+  "homepage": "https://github.com/letterflow/ngx-dynamic-script-loader#readme",
+  "keywords": [
+    "Angular",
+    "JavaScript",
+    "CDN",
+    "Scripts",
+    "Loader"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/letterflow/ngx-dynamic-script-loader"
+  },
+  "author": {
+    "name": "Nelson Dominguez",
+    "url": "https://github.com/ekkolon"
+  },
+  "contributors": [
+    {
+      "name": "Nelson Dominguez",
+      "url": "https://github.com/ekkolon"
+    }
+  ],
+  "peerDependencies": {
+    "@angular/common": "^14.0.0",
+    "@angular/core": "^14.0.0",
+    "rxjs": "~7.5.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
+}
