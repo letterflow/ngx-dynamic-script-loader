@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import {NgxDynamicScriptLoader} from './ngx-dynamic-script-loader.service';
+import { NgxDynamicScriptLoader } from './ngx-dynamic-script-loader.service';
 
 describe('NgxDynamicScriptLoaderService', () => {
   let service: NgxDynamicScriptLoader;
